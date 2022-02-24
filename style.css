@@ -1,0 +1,134 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    max-width: 1000px;
+}
+
+.progress {
+    height: 40px;
+    border-radius: 40px;
+    position: relative;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.progressbar-container {
+    background-color: #ebebeb;
+    height: 35px;
+    border-radius: 40px;
+    position: relative;
+}
+.progressbar-container::before {
+    content: '';
+    width: 40px;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    z-index: 1;
+    border-radius: 50px;
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+    box-shadow: 0 2px 2px rgba(50, 50, 50, .5);
+}
+.progress:nth-of-type(1) .progressbar-container::before {
+    border: 2px solid #78a63f;
+}
+.progress:nth-of-type(2) .progressbar-container::before {
+    border: 2px solid #b44c4c;
+}
+.progress:nth-of-type(3) .progressbar-container::before {
+    border: 2px solid #9c9c9c;
+}
+.progress:nth-of-type(4) .progressbar-container::before {
+    border: 2px solid #3f80a6;
+}
+.progress:nth-of-type(5) .progressbar-container::before {
+    border: 2px solid #b9b138;
+}
+.progressbar {
+    width: 100%;
+    height: 35px;
+    border-radius: 40px;
+    border-width: 2px;
+    border-style: solid;
+    box-shadow: 0 2px 2px rgba(50, 50, 50, .5);
+    position: relative;
+    overflow: hidden;
+    transform: translateX(-100%);
+}
+.progressbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, .8) 1px, rgba(255, 255, 255, .1) 2px, rgba(255, 255, 255, .1), transparent, rgba(0, 0, 0, .1));
+}
+.progress:nth-of-type(1) .progressbar {
+    background-image: repeating-linear-gradient(135deg, #9fdf51, #9fdf51 5px, #b0e070 5px, #b0e070 10px);
+    border-color: #78a63f;
+}
+.progress:nth-of-type(2) .progressbar {
+    background-image: repeating-linear-gradient(135deg, #ff877e, #ff877e 5px, #ff988a 5px, #ff988a 10px);
+    border-color: #b44c4c;
+}
+.progress:nth-of-type(3) .progressbar {
+    background-image: repeating-linear-gradient(135deg, white, white);
+    border-color: #9c9c9c;
+}
+.progress:nth-of-type(4) .progressbar {
+    background-image: repeating-linear-gradient(135deg, #86c9ee, #86c9ee 5px, #9bd1f3 5px, #9bd1f3 10px);
+    border-color: #3f80a6;
+}
+.progress:nth-of-type(5) .progressbar {
+    background-image: repeating-linear-gradient(135deg, #fccf5a, #fccf5a 5px, #ffd878 5px, #ffd878 10px);
+    border-color: #b9b138;
+}
+.progress p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(50, 50, 50, .7);
+    text-shadow: 0 1px 2px white;
+    z-index: 1;
+}
+button {
+    display: block;
+    margin: 50px auto;
+    font-size: 20px;
+    padding: .5em 2em;
+    cursor: pointer;
+    border-radius: 50px;
+    border: 2px solid #6bad14;
+    background-color: #6bad14;
+    color: white;
+    transition: all .3s ease;
+    box-shadow: 0 2px 2px rgba(50, 50, 50, .5);
+}
+button:hover {
+    background-color: white;
+    color: #6bad14;
+}
+.finish .progressbar-container::before {
+    display: block;
+}
+.finish .progressbar {
+    animation: finish 3s linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes finish {
+    from {transform: translateX(-100%);}
+    to {transform: translateX(0);}
+}
